@@ -38,6 +38,15 @@ class Application {
   isRegisteredForRemoteNotifications(): Promise<boolean> {
     return PushNotificationEx.applicationIsRegisteredForRemoteNotifications();
   }
+
+  // Badge Icon Number
+  setBadgeIconNumber(number: number): Promise<boolean> {
+    return PushNotificationEx.applicationSetIconBadgeNumber(number);
+  }
+
+  getBadgeIconNumber(): Promise<number> {
+    return PushNotificationEx.applicationGetIconBadgeNumber();
+  }
 }
 
 export default new Application();

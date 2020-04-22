@@ -1154,6 +1154,25 @@ RCT_EXPORT_METHOD(applicationIsRegisteredForRemoteNotifications:(RCTPromiseResol
     });
 }
 
+RCT_EXPORT_METHOD(applicationSetIconBadgeNumber:(NSInteger)number
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withReject:(RCTPromiseRejectBlock)reject)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [UIApplication sharedApplication].applicationIconBadgeNumber = number;
+        resolve(@true);
+    });
+}
+
+RCT_EXPORT_METHOD(applicationGetIconBadgeNumber:(RCTPromiseResolveBlock)resolve
+                  withReject:(RCTPromiseRejectBlock)reject)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        resolve(@([UIApplication sharedApplication].applicationIconBadgeNumber));
+    });
+}
+
+
 - (void) applicationDidRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSMutableString *deviceTokenHex = [NSMutableString string];
 
